@@ -17,6 +17,13 @@
       padding: 40px 20px;
       text-align: center;
     }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 10px;
+    }
     nav {
       margin-top: 10px;
     }
@@ -40,6 +47,16 @@
     ul {
       padding-left: 20px;
     }
+    .resume-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #0a66c2;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
     footer {
       background: #0a66c2;
       color: white;
@@ -53,6 +70,7 @@
   <header>
     <h1>Pratik More</h1>
     <p>Full Stack Developer | Java | Spring Boot | React | AWS</p>
+    <img src="profile.jpg" alt="Pratik More" class="profile-img">
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -65,6 +83,7 @@
     <section id="about">
       <h2>About Me</h2>
       <p>I’m a Full Stack Developer with 3+ years of experience developing scalable backend systems and intuitive frontend applications. I specialize in Spring Boot, React.js, and AWS Cloud with a passion for clean code and problem-solving.</p>
+      <a href="Pratik_More_Resume.pdf" class="resume-button" download>Download Resume</a>
     </section>
 
     <section id="projects">
@@ -99,3 +118,4 @@
   </footer>
 </body>
 </html>
+
