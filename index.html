@@ -6,6 +6,7 @@
   <title>Pratik More | Full Stack Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -13,11 +14,15 @@
       color: #333;
     }
     header {
-      background: linear-gradient(120deg, #0a66c2, #004182);
+      background: linear-gradient(135deg, #0a66c2, #004182);
       color: white;
-      padding: 60px 20px 40px;
+      padding: 80px 20px 40px;
       text-align: center;
-      position: relative;
+    }
+    .hero-tagline {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-top: 10px;
     }
     .profile-img {
       width: 140px;
@@ -28,22 +33,22 @@
       margin-top: 20px;
     }
     nav {
-      margin-top: 15px;
+      margin-top: 20px;
     }
     nav a {
       color: white;
-      margin: 0 12px;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: 500;
-      padding: 5px 10px;
-      border-radius: 5px;
+      padding: 6px 12px;
+      border-radius: 6px;
       transition: background 0.3s;
     }
     nav a:hover {
       background: rgba(255, 255, 255, 0.2);
     }
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px;
     }
@@ -53,11 +58,7 @@
       padding-bottom: 5px;
     }
     section {
-      margin-bottom: 50px;
-    }
-    ul {
-      padding-left: 20px;
-      line-height: 1.6;
+      margin-bottom: 60px;
     }
     .resume-button {
       display: inline-block;
@@ -73,6 +74,22 @@
     .resume-button:hover {
       background-color: #084c9e;
     }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      flex: 1 1 300px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
     footer {
       background: #0a66c2;
       color: white;
@@ -84,10 +101,11 @@
 <body>
   <header>
     <h1>Pratik More</h1>
-    <p>Full Stack Developer | Java | Spring Boot | React | AWS</p>
+    <p class="hero-tagline">🚀 Building Scalable Systems & Sleek Interfaces with Passion for Code</p>
     <img src="profile.jpg" alt="Pratik More" class="profile-img">
     <nav>
       <a href="#about">About</a>
+      <a href="#whatido">What I Do</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
@@ -101,13 +119,40 @@
       <a href="Pratik_More_Resume.pdf" class="resume-button" download>📄 Download Resume</a>
     </section>
 
+    <section id="whatido">
+      <h2>What I Do</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Backend Engineering</h3>
+          <p>Designing robust APIs, microservices, and data pipelines with Java, Spring Boot, and RESTful principles.</p>
+        </div>
+        <div class="card">
+          <h3>Frontend Development</h3>
+          <p>Crafting intuitive, responsive UIs with React.js, HTML/CSS, and JavaScript for seamless user experiences.</p>
+        </div>
+        <div class="card">
+          <h3>Cloud & DevOps</h3>
+          <p>Deploying on AWS, automating with Terraform, CI/CD pipelines, and containerizing with Docker.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="projects">
       <h2>Projects</h2>
-      <ul>
-        <li><strong>Carpooling Android App:</strong> Firebase + SQLite – Increased sign-ups by 15%.</li>
-        <li><strong>Gender Prediction ML:</strong> Python, Logistic Regression – 90% accuracy.</li>
-        <li><strong>ERP Simulation Game:</strong> SAP & Tableau – 2nd place out of 6 teams with €680M valuation.</li>
-      </ul>
+      <div class="cards">
+        <div class="card">
+          <h3>Carpooling Android App</h3>
+          <p>Built with Firebase + SQLite. Enabled real-time ride sharing. Boosted user registration by 15%.</p>
+        </div>
+        <div class="card">
+          <h3>Gender Prediction Model</h3>
+          <p>Machine Learning classifier using Logistic Regression with 90% accuracy on labeled datasets.</p>
+        </div>
+        <div class="card">
+          <h3>ERP Simulation Game</h3>
+          <p>Strategized manufacturing and inventory control in SAP ERP. 2nd out of 6 teams with €680M valuation.</p>
+        </div>
+      </div>
     </section>
 
     <section id="skills">
@@ -133,4 +178,3 @@
   </footer>
 </body>
 </html>
-
