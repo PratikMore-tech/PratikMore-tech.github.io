@@ -10,30 +10,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'Roboto', sans-serif; background: linear-gradient(to right, #f0f2f5, #ffffff); color: #333; margin:0; padding:0; }
+    body { font-family: 'Roboto', sans-serif; background: #000; color: #fff; margin:0; padding:0; position: relative; }
     body.dark { background: #121212; color: #e0e0e0; }
-    header { background: linear-gradient(135deg, #0a66c2, #004182); color: white; padding: 80px 20px 40px; text-align: center; }
+    header { background: transparent; color: white; text-align: center; padding-top: 120px; position: relative; z-index: 2; }
     .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-top: 20px; }
     .resume-button { background-color: #0a66c2; color: white; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 15px; }
     .resume-button:hover { background-color: #084c9e; }
-    .card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-radius: 12px; overflow: hidden; }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-    footer { background: #0a66c2; color: white; text-align: center; padding: 20px 10px; margin-top: 40px; }
+    .card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.05); color: #fff; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(255,255,255,0.2); }
+    footer { background: #0a66c2; color: white; text-align: center; padding: 20px 10px; margin-top: 40px; position: relative; z-index: 2; }
     .skills-icons i { font-size: 2rem; color: #0a66c2; transition: transform 0.3s; }
     .skills-icons i:hover { transform: scale(1.3); }
     .toggle-btn { position: fixed; top: 10px; right: 10px; background: #0a66c2; color: white; padding: 10px 14px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; z-index: 999; }
+    #particles-js { position: fixed; width: 100%; height: 100%; top:0; left:0; z-index: 0; }
+    #preloader { background: #000; width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
-
 <body>
+<div id="preloader">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div id="particles-js"></div>
 
-<button class="toggle-btn" onclick="document.body.classList.toggle('dark')">Toggle Dark Mode</button>
+<button class="toggle-btn" onclick="toggleDarkMode()">Toggle Mode</button>
 
-<!-- Sticky Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">Pratik More</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -52,92 +57,47 @@
 </nav>
 
 <header>
-  <h1 data-aos="fade-down">Pratik More</h1>
-  <p class="hero-tagline" data-aos="fade-up">🚀 Building Scalable Systems & Sleek Interfaces with Passion for Code</p>
+  <h1 id="typed-text"></h1>
   <img src="profile.jpg" alt="Pratik More" class="profile-img" data-aos="zoom-in">
 </header>
 
-<div class="container mt-5">
+<div class="container mt-5 position-relative" style="z-index:2">
 
-  <section id="about" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p>I’m a Full Stack Developer with 3+ years of experience building scalable backend systems and sleek frontend interfaces. I specialize in Spring Boot, React.js, and AWS Cloud and enjoy transforming ideas into powerful, elegant code.</p>
-    <a href="Pratik_More_Resume.pdf" class="resume-button" download>📄 Download Resume</a>
-  </section>
+<section id="about" data-aos="fade-up">
+  <h2>About Me</h2>
+  <p>I’m a Full Stack Developer with 3+ years of experience building scalable backend systems and sleek frontend interfaces. I specialize in Spring Boot, React.js, and AWS Cloud and enjoy transforming ideas into powerful, elegant code.</p>
+  <a href="Pratik_More_Resume.pdf" class="resume-button" download>📄 Download Resume</a>
+</section>
 
-  <section id="whatido" class="mt-5" data-aos="fade-up">
-    <h2>What I Do</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card p-3">
-          <h4>Backend Engineering</h4>
-          <p>Designing robust APIs, microservices, and data pipelines with Java, Spring Boot, and RESTful principles.</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card p-3">
-          <h4>Frontend Development</h4>
-          <p>Crafting intuitive, responsive UIs with React.js, HTML/CSS, and JavaScript for seamless user experiences.</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card p-3">
-          <h4>Cloud & DevOps</h4>
-          <p>Deploying on AWS, automating with Terraform, CI/CD pipelines, and containerizing with Docker.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="whatido" class="mt-5" data-aos="fade-up">
+  <h2>What I Do</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4"><div class="card p-3"><h4>Backend Engineering</h4><p>Designing APIs, microservices, and data pipelines with Java, Spring Boot.</p></div></div>
+    <div class="col-md-4 mb-4"><div class="card p-3"><h4>Frontend Development</h4><p>Building responsive UIs with React.js, HTML/CSS, and JavaScript.</p></div></div>
+    <div class="col-md-4 mb-4"><div class="card p-3"><h4>Cloud & DevOps</h4><p>Deploying on AWS, automating with Terraform, and containerizing apps.</p></div></div>
+  </div>
+</section>
 
-  <section id="projects" class="mt-5" data-aos="fade-up">
-    <h2>Projects</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card p-3">
-          <h4>Carpooling Android App</h4>
-          <p>Built with Firebase + SQLite. Enabled real-time ride sharing. Boosted user registration by 15%.</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card p-3">
-          <h4>Gender Prediction Model</h4>
-          <p>Machine Learning classifier using Logistic Regression with 90% accuracy on labeled datasets.</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card p-3">
-          <h4>ERP Simulation Game</h4>
-          <p>Strategized manufacturing and inventory control in SAP ERP. 2nd out of 6 teams with €680M valuation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="projects" class="mt-5" data-aos="fade-up">
+  <h2>Projects</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4"><div class="card p-3"><h4>Carpooling Android App</h4><p>Built with Firebase + SQLite. Enabled real-time ride sharing.</p></div></div>
+    <div class="col-md-4 mb-4"><div class="card p-3"><h4>Gender Prediction Model</h4><p>ML classifier using Logistic Regression with 90% accuracy.</p></div></div>
+    <div class="col-md-4 mb-4"><div class="card p-3"><h4>ERP Simulation Game</h4><p>2nd out of 6 teams, €680M valuation in SAP ERP simulation.</p></div></div>
+  </div>
+</section>
 
-  <section id="skills" class="mt-5" data-aos="fade-up">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li><strong>Languages:</strong> Java, Python, JavaScript, SQL</li>
-      <li><strong>Frameworks:</strong> Spring Boot, React.js, Node.js</li>
-      <li><strong>Tools:</strong> Git, Docker, Terraform, Firebase</li>
-      <li><strong>Cloud:</strong> AWS (EC2, Beanstalk, Route53)</li>
-    </ul>
-    <div class="skills-icons d-flex flex-wrap gap-3 mt-3">
-      <i class="bi bi-code-slash" title="JavaScript"></i>
-      <i class="bi bi-box" title="Docker"></i>
-      <i class="bi bi-git" title="Git"></i>
-      <i class="bi bi-cloud" title="AWS"></i>
-      <i class="bi bi-braces" title="React"></i>
-      <i class="bi bi-cpu" title="Java"></i>
-      <i class="bi bi-diagram-3" title="Spring Boot"></i>
-    </div>
-  </section>
+<section id="skills" class="mt-5" data-aos="fade-up">
+  <h2>Technical Skills</h2>
+  <div id="lottie-skills" style="width:300px;height:300px;"></div>
+</section>
 
-  <section id="contact" class="mt-5" data-aos="fade-up">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:morepratik503@gmail.com">morepratik503@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/pratikmore95" target="_blank">/in/pratikmore95</a></p>
-    <p>GitHub: <a href="https://github.com/PratikMoretech" target="_blank">@PratikMoretech</a></p>
-  </section>
+<section id="contact" class="mt-5" data-aos="fade-up">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:morepratik503@gmail.com">morepratik503@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://linkedin.com/in/pratikmore95" target="_blank">/in/pratikmore95</a></p>
+  <p>GitHub: <a href="https://github.com/PratikMoretech" target="_blank">@PratikMoretech</a></p>
+</section>
 
 </div>
 
@@ -145,12 +105,38 @@
   &copy; 2024 Pratik More. All rights reserved.
 </footer>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.9.6/build/player/lottie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <script>
-  AOS.init({ once: true });
-</script>
+  // Preloader
+  window.addEventListener('load', () => { document.getElementById('preloader').style.display = 'none'; });
 
+  // AOS Init
+  AOS.init({ once: true });
+
+  // Typed.js Init
+  var typed = new Typed('#typed-text', { strings: ["Full Stack Developer", "Cloud Enthusiast", "Problem Solver"], typeSpeed: 50, backSpeed: 30, loop: true });
+
+  // Lottie Animation
+  lottie.loadAnimation({ container: document.getElementById('lottie-skills'), renderer: 'svg', loop: true, autoplay: true, path: 'https://assets5.lottiefiles.com/packages/lf20_pwohahvd.json' });
+
+  // ParticlesJS Init
+  particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json', function() {});
+
+  // Toggle Dark Mode
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+  }
+
+  // Navbar background change on scroll
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('bg-primary', window.scrollY > 50);
+  });
+</script>
 </body>
 </html>
+
