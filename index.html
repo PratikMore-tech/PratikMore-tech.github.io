@@ -2,252 +2,155 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pratik More | Full Stack Developer</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to right, #f0f2f5, #ffffff);
-      color: #333;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark {
-      background: #121212;
-      color: #e0e0e0;
-    }
-    header {
-      background: linear-gradient(135deg, #0a66c2, #004182);
-      color: white;
-      padding: 80px 20px 40px;
-      text-align: center;
-    }
-    .hero-tagline {
-      font-size: 1.2rem;
-      font-style: italic;
-      margin-top: 10px;
-    }
-    .profile-img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-      margin-top: 20px;
-    }
-    nav {
-      margin-top: 20px;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h2 {
-      color: #0a66c2;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 5px;
-    }
-    section {
-      margin-bottom: 60px;
-    }
-    .resume-button {
-      display: inline-block;
-      padding: 12px 24px;
-      margin-top: 15px;
-      background-color: #0a66c2;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .resume-button:hover {
-      background-color: #084c9e;
-    }
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .card {
-      flex: 1 1 300px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 20px;
-      transition: transform 0.3s ease;
-    }
-    .dark .card {
-      background: #1e1e1e;
-      color: #ccc;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    footer {
-      background: #0a66c2;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-    }
-    .toggle-btn {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background: #0a66c2;
-      color: white;
-      padding: 10px 14px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .skills-icons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .skills-icons i {
-      font-size: 2rem;
-      color: #0a66c2;
-      transition: transform 0.3s;
-    }
-    .skills-icons i:hover {
-      transform: scale(1.3);
-    }
-    .animated-section {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.8s ease forwards;
-    }
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background: linear-gradient(to right, #f0f2f5, #ffffff); color: #333; margin:0; padding:0; }
+    body.dark { background: #121212; color: #e0e0e0; }
+    header { background: linear-gradient(135deg, #0a66c2, #004182); color: white; padding: 80px 20px 40px; text-align: center; }
+    .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-top: 20px; }
+    .resume-button { background-color: #0a66c2; color: white; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 15px; }
+    .resume-button:hover { background-color: #084c9e; }
+    .card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-radius: 12px; overflow: hidden; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    footer { background: #0a66c2; color: white; text-align: center; padding: 20px 10px; margin-top: 40px; }
+    .skills-icons i { font-size: 2rem; color: #0a66c2; transition: transform 0.3s; }
+    .skills-icons i:hover { transform: scale(1.3); }
+    .toggle-btn { position: fixed; top: 10px; right: 10px; background: #0a66c2; color: white; padding: 10px 14px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; z-index: 999; }
   </style>
 </head>
+
 <body>
-  <button class="toggle-btn" onclick="document.body.classList.toggle('dark')">Toggle Dark Mode</button>
 
-  <header>
-    <h1>Pratik More</h1>
-    <p class="hero-tagline">🚀 Building Scalable Systems & Sleek Interfaces with Passion for Code</p>
-    <img src="profile.jpg" alt="Pratik More" class="profile-img">
-    <nav>
-      <a href="#about">About</a>
-      <a href="#whatido">What I Do</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<button class="toggle-btn" onclick="document.body.classList.toggle('dark')">Toggle Dark Mode</button>
 
+<!-- Sticky Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
   <div class="container">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I’m a Full Stack Developer with 3+ years of experience building scalable backend systems and sleek frontend interfaces. I specialize in Spring Boot, React.js, and AWS Cloud and enjoy transforming ideas into powerful, elegant code.</p>
-      <a href="Pratik_More_Resume.pdf" class="resume-button" download>📄 Download Resume</a>
-    </section>
+    <a class="navbar-brand" href="#">Pratik More</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#whatido">What I Do</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    <section id="whatido">
-      <h2>What I Do</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Backend Engineering</h3>
+<header>
+  <h1 data-aos="fade-down">Pratik More</h1>
+  <p class="hero-tagline" data-aos="fade-up">🚀 Building Scalable Systems & Sleek Interfaces with Passion for Code</p>
+  <img src="profile.jpg" alt="Pratik More" class="profile-img" data-aos="zoom-in">
+</header>
+
+<div class="container mt-5">
+
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>I’m a Full Stack Developer with 3+ years of experience building scalable backend systems and sleek frontend interfaces. I specialize in Spring Boot, React.js, and AWS Cloud and enjoy transforming ideas into powerful, elegant code.</p>
+    <a href="Pratik_More_Resume.pdf" class="resume-button" download>📄 Download Resume</a>
+  </section>
+
+  <section id="whatido" class="mt-5" data-aos="fade-up">
+    <h2>What I Do</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <h4>Backend Engineering</h4>
           <p>Designing robust APIs, microservices, and data pipelines with Java, Spring Boot, and RESTful principles.</p>
         </div>
-        <div class="card">
-          <h3>Frontend Development</h3>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <h4>Frontend Development</h4>
           <p>Crafting intuitive, responsive UIs with React.js, HTML/CSS, and JavaScript for seamless user experiences.</p>
         </div>
-        <div class="card">
-          <h3>Cloud & DevOps</h3>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <h4>Cloud & DevOps</h4>
           <p>Deploying on AWS, automating with Terraform, CI/CD pipelines, and containerizing with Docker.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Carpooling Android App</h3>
+  <section id="projects" class="mt-5" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <h4>Carpooling Android App</h4>
           <p>Built with Firebase + SQLite. Enabled real-time ride sharing. Boosted user registration by 15%.</p>
         </div>
-        <div class="card">
-          <h3>Gender Prediction Model</h3>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <h4>Gender Prediction Model</h4>
           <p>Machine Learning classifier using Logistic Regression with 90% accuracy on labeled datasets.</p>
         </div>
-        <div class="card">
-          <h3>ERP Simulation Game</h3>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card p-3">
+          <h4>ERP Simulation Game</h4>
           <p>Strategized manufacturing and inventory control in SAP ERP. 2nd out of 6 teams with €680M valuation.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="skills" class="animated-section">
-      <h2>Technical Skills</h2>
-      <ul>
-        <li><strong>Languages:</strong> Java, Python, JavaScript, SQL</li>
-        <li><strong>Frameworks:</strong> Spring Boot, React.js, Node.js</li>
-        <li><strong>Tools:</strong> Git, Docker, Terraform, Firebase</li>
-        <li><strong>Cloud:</strong> AWS (EC2, Beanstalk, Route53)</li>
-      </ul>
-      <div class="skills-icons">
-        <i class="bi bi-code-slash" title="JavaScript"></i>
-        <i class="bi bi-box" title="Docker"></i>
-        <i class="bi bi-git" title="Git"></i>
-        <i class="bi bi-cloud" title="AWS"></i>
-        <i class="bi bi-braces" title="React"></i>
-        <i class="bi bi-cpu" title="Java"></i>
-        <i class="bi bi-diagram-3" title="Spring Boot"></i>
-      </div>
-    </section>
+  <section id="skills" class="mt-5" data-aos="fade-up">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li><strong>Languages:</strong> Java, Python, JavaScript, SQL</li>
+      <li><strong>Frameworks:</strong> Spring Boot, React.js, Node.js</li>
+      <li><strong>Tools:</strong> Git, Docker, Terraform, Firebase</li>
+      <li><strong>Cloud:</strong> AWS (EC2, Beanstalk, Route53)</li>
+    </ul>
+    <div class="skills-icons d-flex flex-wrap gap-3 mt-3">
+      <i class="bi bi-code-slash" title="JavaScript"></i>
+      <i class="bi bi-box" title="Docker"></i>
+      <i class="bi bi-git" title="Git"></i>
+      <i class="bi bi-cloud" title="AWS"></i>
+      <i class="bi bi-braces" title="React"></i>
+      <i class="bi bi-cpu" title="Java"></i>
+      <i class="bi bi-diagram-3" title="Spring Boot"></i>
+    </div>
+  </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:morepratik503@gmail.com">morepratik503@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/pratikmore95" target="_blank">/in/pratikmore95</a></p>
-      <p>GitHub: <a href="https://github.com/PratikMoretech" target="_blank">@PratikMoretech</a></p>
-    </section>
-  </div>
+  <section id="contact" class="mt-5" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:morepratik503@gmail.com">morepratik503@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/pratikmore95" target="_blank">/in/pratikmore95</a></p>
+    <p>GitHub: <a href="https://github.com/PratikMoretech" target="_blank">@PratikMoretech</a></p>
+  </section>
 
-  <footer>
-    &copy; 2024 Pratik More. All rights reserved.
-  </footer>
+</div>
 
-  <script>
-    const sections = document.querySelectorAll(\".animated-section\");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.style.animationPlayState = \"running\";
-      });
-    }, { threshold: 0.1 });
-    window.addEventListener(\"DOMContentLoaded\", () => {
-      sections.forEach(section => {
-        observer.observe(section);
-      });
-    });
-  </script>
+<footer>
+  &copy; 2024 Pratik More. All rights reserved.
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true });
+</script>
+
 </body>
 </html>
